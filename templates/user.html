@@ -1,0 +1,6 @@
+<h1>Welcome {{user_name|upper|trim()}}</h1>
+<h2>Come aboard!</h2>
+{{ msg|striptags }} <br>
+</br>
+<h2>My possible choices of chocolates are:</h2>
+{% for num in choc_no %}{% if num%2==0 %}{{ num+100 }}</br>{% endif %}{% endfor %}
