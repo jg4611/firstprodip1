@@ -4,5 +4,6 @@
         <a class="navbar-brand" href="{{ url_for('index') }}">Home</a>
     </div>
 </nav>
+<link href="{{ url_for ('static',filename='styles.css') }}" rel="stylesheet">
 <p>------This is the common top part of each page-------</p> <br/><br/>{% block content %}{% endblock %} <br/><br/>
 <p>--------This is the common below part of each page.--------</p>
