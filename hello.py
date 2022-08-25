@@ -1,8 +1,30 @@
 from flask import Flask, render_template
-#from flask_wtf import FlaskForm
+from flask_wtf import FlaskForm
+from wtforms import StringField,SubmitField
+from wtforms.validators import DataRequired
 
-#create firat instance
+#create first instance
 app=Flask(__name__)
+
+#create a secret key
+app.config['SECRET_KEY']='mysupersecretkey'
+
+#create a form class
+class NamerForm(FlaskForm):
+  name=StringField("What's your name",validators=[DataRequired()])
+  submit=SubmitField("submit")
+  
+#define form route
+@app.route('/name', methods=['GET','POST'])
+def name():
+  name=None
+  form=NamerForm()
+  #validate form
+  if form.validate_on_submit():
+    name=form.name.data
+    #form.name.data=''
+  return render_template("name.html",name=name,form=form)  
+  
 
 #create decorator/index
 @app.route('/')
