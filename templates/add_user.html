@@ -1,0 +1,26 @@
+{% extends 'base.html' %} {% block content %}{% for message in get_flashed_messages() %} {{ message }} {% endfor %} {% if name %}
+<h1>Hello {{ name }}!!</h1>
+<p>You are on add_user page!!</p>
+{% else %}
+<h1>User List:</h1>
+<br />
+<form method="POST">
+    {{ form.hidden_tag() }}{{ form.name.label }}{{ form.name() }}<br /> {{ form.email.label }}{{ form.email() }}<br /><br />{{ form.submit() }} </form>
+<table class="table">
+    <tr>
+        <h1>Users added till yet: </h1>
+        <th scope="col">S.No.</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            {% for our_user in our_users %}
+            <th scope="row">{{ our_user.id }}</th>
+            <td>{{ our_user.name }}</td>
+            <td>{{ our_user.email }}</td>
+            <br/>
+        </tr> {% endfor %}
+    </tbody>
+</table>{% endif %} {% endblock %}

@@ -6,3 +6,8 @@ h1 {
 body {
     background: #f4f4f4;
 }
+
+a {
+    margin-right: 30px;
+    /* specifies a gap of 30px on the right side */
+}

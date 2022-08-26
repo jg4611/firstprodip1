@@ -1,0 +1,10 @@
+{% extends 'base.html' %} {% block content %}{% for message in get_flashed_messages() %} {{ message }} {% endfor %} {% if name %}
+<h1>Hello {{ name }}!!</h1>
+<p>Your email is: {{ email }}!!</p>
+<p>Your hobby is: {{ hobby }}!!</p>
+{% else %}
+<h1>Welcome to HobbyPage</h1>
+<br />
+<form method="POST">
+    {{ form.hidden_tag() }}{{ form.name.label }}{{ form.name() }}<br /> {{ form.email.label }}{{ form.email() }}<br />{{ form.hobby.label }}{{ form.hobby() }}<br /><br />{{ form.submit() }} </form>
+{% endif %} {% endblock %}
