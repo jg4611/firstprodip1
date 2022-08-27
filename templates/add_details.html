@@ -1,0 +1,29 @@
+{% extends 'base.html' %} {% block content %}{% for message in get_flashed_messages() %} {{ message }} {% endfor %} {% if name %}
+<h1>Hello {{ name }}!!</h1>
+<p>Your email is: {{ email }}!!</p>
+<p>Your address is: {{ address }}!!</p>
+{% else %}
+<h1>Welcome to 'Add Details' section</h1>
+<br />
+<form method="POST">
+    {{ form.hidden_tag() }}{{ form.name.label }}{{ form.name() }}<br /> {{ form.email.label }}{{ form.email() }}
+    <br />{{ form.address.label }}{{ form.address() }}<br /><br />{{ form.submit() }} </form>{% endif %}
+<table class="table">
+    <tr>
+        <h1>List of details: </h1>
+        <th scope="col">S.No.</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Address</th>
+    </tr>
+    <tbody>
+        <tr>
+            {% for detail_list in detail_lists %}
+            <td>{{ detail_list.id }}</td>
+            <td>{{ detail_list.name }}</td>
+            <td>{{ detail_list.email }}</td>
+            <td>{{ detail_list.address }}</td>
+        </tr> {% endfor %}
+    </tbody>
+</table>
+<a class="navbar-brand" href="{{ url_for('add_details') }}">Add new detail</a> {% endblock %}
